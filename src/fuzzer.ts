@@ -44,7 +44,8 @@ export class Fuzzer {
                 regression: boolean,
                 onlyAscii: boolean,
                 versifier: boolean,
-                fuzzTime: number) {
+                fuzzTime: number,
+                extraArgs: string[]) {
         this.target = target;
         this.corpus = new Corpus(dir, onlyAscii);
         this.onlyAscii = onlyAscii;
@@ -60,7 +61,7 @@ export class Fuzzer {
         this.regression = regression;
         this.worker = fork(`${__dirname}/worker.js`,
             [this.target],
-            {execArgv: [`--max-old-space-size=${this.rssLimitMb}`]});
+            {execArgv: [`--max-old-space-size=${this.rssLimitMb}`, ...extraArgs]});
         this.workerRss = 0;
         this.rssInterval = null;
         this.pulseInterval = null;

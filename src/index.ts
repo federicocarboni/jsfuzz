@@ -12,11 +12,15 @@ function startFuzzer(argv: any) {
         argv.regression,
         argv.onlyAscii,
         argv.versifier, 
-        argv.fuzzTime);
+        argv.fuzzTime,
+        argv["--"]);
     fuzzer.start()
 }
 
 yargs.scriptName("jsfuzz")
+    .parserConfiguration({
+        'populate--': true
+    })
     .command('$0 <target> [dir..]', 'start the fuzzer', (yargs: any) => {
         yargs.positional('target', {
             describe: 'Path to file containing the fuzz target function',
