@@ -1,3 +1,8 @@
+# Fork of Jsfuzz
+
+Exactly the same jsfuzz but allows to pass custom arguments to the node instance
+run by the fuzzer. See commit 3cd77ff67c6331368930d184a67cce0211371c65
+
 # Jsfuzz: coverage-guided fuzz testing for Javascript
 
 Jsfuzz is coverage-guided [fuzzer](https://developer.mozilla.org/en-US/docs/Glossary/Fuzzing) for testing javascript/nodejs packages.
